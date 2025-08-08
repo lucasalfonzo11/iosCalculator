@@ -19,7 +19,8 @@ export const CalculatorScreen = () => {
         multiplyOperation,
         divideOperation,
         prevNumber,
-        calculateResult
+        calculateResult,
+        formula
     } = useCalculator();
 
     return (
@@ -30,15 +31,21 @@ export const CalculatorScreen = () => {
                     adjustsFontSizeToFit
                     numberOfLines={1}
                 >
-                    { number }
+                    { formula }
                 </Text>
-                <Text 
-                    style={globalStyles.subResult}
-                    adjustsFontSizeToFit
-                    numberOfLines={1}
-                >
-                    { (prevNumber === '0') ? '' : prevNumber }
-                </Text>
+                {
+                    (formula === prevNumber)
+                    ? <Text style={globalStyles.subResult}></Text>
+                    : 
+                    <Text 
+                        style={globalStyles.subResult}
+                        adjustsFontSizeToFit
+                        numberOfLines={1}
+                    >
+                        { prevNumber }
+                    </Text>
+                }
+                
             </View>
 
             <View style={globalStyles.row}>
